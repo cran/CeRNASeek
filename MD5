@@ -1,0 +1,15 @@
+00c04eb8a12eb723cedc79fb9bdc71e5 *DESCRIPTION
+cfaba63bbe1ca9d45d131ebefbad017e *NAMESPACE
+19c54db859faa4fc3cebc0fda820dbb3 *R/ceRNA.Lin.R
+296141424b12b4cf0d6a77935f849913 *R/ceRNA.Net.R
+06741b5523f4f202017e348cf9e02d0f *R/ceRNA.app.R
+6ecce4d04c0a8c87c25da0ab7afd8a86 *R/ceRNA.basic.R
+dbd2b8ff36752a4bed2982f8f236b072 *R/ceRNA.cmi.R
+b74614051deedf34625a4bbc269b581f *data/dataset.rda
+1c5e783105d12425c51ab9a9a880ffe4 *man/CeRNASeek-package.Rd
+b9e587d41ddf0cafef756d3936eef17e *man/ceRNA.Lin.Rd
+6aa18845f97ba32cc192f6b0a1507b25 *man/ceRNA.Net.Rd
+d1c56540f168137d4601d112e7dd7893 *man/ceRNA.app.Rd
+2bcd0e460e29feb5448de9c82daa3882 *man/ceRNA.basic.Rd
+1e141af903f544f53f370db4a67ca47b *man/ceRNA.cmi.Rd
+fc5abf821aecbe6dd7fd60acb014fc94 *man/dataset.Rd

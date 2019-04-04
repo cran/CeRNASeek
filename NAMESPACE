@@ -1,0 +1,8 @@
+import(igraph)
+importFrom("gtools","permutations","combinations")
+importFrom("stats", "cor", "cor.test", "pchisq", "phyper")
+importFrom("igraph","graph.edgelist","layout_in_circle","V<-","E<-","layout.circle","layout_on_grid","layout_as_star","layout_","degree","betweenness","transitivity","evcent","closeness","E","V","plot.igraph")
+importFrom("grDevices", "dev.off", "pdf")
+importFrom("graphics", "plot")
+importFrom("utils", "combn")
+exportPattern("^[[:alpha:]]+")
