@@ -19,6 +19,19 @@ A list with 4 variables:
       a dataframe representing miRNA expression profile in glioblastoma.It includes 57 rows standing for 57 miRNA and 541 columns standing for 541 samples.Its rownames are miRNA symbols.
     }\item{Pre.ceRNA}{
       a data frame representing the ceRNA identified in the pre-experiment using the method provided by the software to draw a network map.
+    }\item{Pre.ceRNA}{
+      a data frame representing the ceRNA identified in the pre-experiment using the method provided by the software to draw a network map.
+    }\item{GOterms}{
+      a list representing that goterm of interest and all gene sets in the term.
+    }\item{background}{
+      a character representing a gene set in which GOterm annotated genes must be.
+    }\item{exp.sur}{
+      a data frame representing specifying expression and survival information.Its rownames are sample names.Its colnames
+      are names in triplets and survival information
+    }\item{train}{
+      a data frame representing specifying train sample names
+    }\item{Pre.ceRNA}{
+      a data frame representing specifying test sample names.
     }
   }
 }

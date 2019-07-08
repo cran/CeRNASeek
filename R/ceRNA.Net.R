@@ -20,9 +20,9 @@ g <- graph.edgelist(data[,1:2],directed = net_direct)
  }else{
  plot(g,vertex.size= vertex_size,vertex.label=NA,shape=node_shape,edge.width=E(g)$weight)
  }
- #dev.off()
+# dev.off()
  }else{
- #pdf(file=paste("ceRNA_unweighted_interaction_network",".pdf",sep=""))
+# pdf(file=paste("ceRNA_unweighted_interaction_network",".pdf",sep=""))
  if(v.label){
  plot(g,vertex.size= vertex_size,vertex.label=V(g)$name,shape=node_shape)
  }else{

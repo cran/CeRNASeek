@@ -1,16 +1,16 @@
-\name{ceRNA.Lin}
-\alias{ceRNA.Lin}
+\name{ceRNA.cor}
+\alias{ceRNA.cor}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-identifying miRNA sponge interactions using ceRNA.Lin function 
+identifying miRNA sponge interactions using ceRNA.cor function 
 }
 \description{
-identifying miRNA sponge interactions using ceRNA.Lin.In this function We
+identifying miRNA sponge interactions using ceRNA.cor.In this function We
 implement several popular linear methods ( HyperC, SC) to identify miRNA sponge.
 interactions.
 }
 \usage{
-ceRNA.Lin(miRtar, targetce = NULL, geneexp, miRexp, numMIR = 1, method = "pearson", 
+ceRNA.cor(miRtar, targetce = NULL, geneexp, miRexp, numMIR = 1, method = "pearson", 
 numrandom = 100)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -70,9 +70,9 @@ across 12 major cancers[J]. Oncotarget, 2014, 7(39):64148-64167.
 ##identifying miRNA sponge interactions
 ##Here we take the regulatory relationship between six genes and 71 miRNAs  and corresponding
 ##expression profilesas an example.
-ceRNA.Lin(miRtar=dataset[["miRtar"]], targetce = NULL, geneexp=dataset[["geneexp"]],
+ceRNA.cor(miRtar=dataset[["miRtar"]], targetce = NULL, geneexp=dataset[["geneexp"]],
           miRexp=dataset[["miRexp"]], numMIR = 1,method = "pearson", numrandom = 100)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ceRNA.Lin}
+\keyword{ceRNA.cor}

@@ -1,4 +1,4 @@
-ceRNA.Lin <-
+ceRNA.cor <-
 function(miRtar,targetce=NULL,geneexp,miRexp,numMIR=1,method="pearson",numrandom=100){
 miRtar_d<-split(miRtar[,1],miRtar[,2])
 miR_l<-sapply(miRtar_d,length)

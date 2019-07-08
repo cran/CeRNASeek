@@ -13,7 +13,7 @@ CeRNASeek considers five method to identify ceRNA crosstalk, including two types
 ceRNA regulation prediction methods(ratio based, we termed ratio and hypergeometric test
 based, termed HyperT) and three types of context-specific prediction methods (hypergeometric 
 test plus coexpression, termed HyperC, sensitivity correlation-based method (SC)and conditional 
-mutual information (CMI)-based methods).
+mutual information (CMI)-based methods and cernia method).
    Ratio-based prediction:
 this method ranked the candidate genes by the proportion of common miRNAs,For instance, we need to identify the 
 ceRNA partners for gene i from all candidate gene sets S, and the ratio is calculated as the intersection of miRNAi 
@@ -40,6 +40,19 @@ which predicts ceRNA interactions from expression profiles of candidate RNAs and
 as in Sumazin et al.Firstly computed the significance of difference of I(miRNAi;T2|T1) and I(miRNAi;T2),where miRNAi represents the ith 
 miRNA in the miRNA shared by the two target genes. Then Shuffled condition target's expression in 1000 times. The final 
 significance based on Fisher’s method was calculated.For more information, please refer to the article by Sumazin P et al.
+
+  cernia method
+ cernia method is  implemented based on the following seven scores: 
+1. The fraction of common miRNAs;
+2. The density of the MREs for all shared miRNAs;
+3. The distribution of MREs of the putative ceRNAs;
+4. The relation between the overall number of MREs for a putative ceRNA, compared with the number of miRNAs that yield
+these MREs;
+5. The density of the hybridization energies related to MREs for
+all shared miRNAs;
+6. The DT-Hybrid recommendation scores; and
+7. The pairwise Pearson correlation between putative ceRNA
+expressions from selected tissue.
 }
 \references{
 Xu J , Feng L , Han Z , et al. Extensive ceRNA–ceRNA interaction networks mediated by miRNAs regulate
@@ -53,4 +66,7 @@ long non-coding RNAs and messenger RNAs in human breast cancer[J]. BMC Systems B
 
 Zhang Y , Xu Y , Feng L , et al. Comprehensive characterization of lncRNA-mRNA related ceRNA network
 across 12 major cancers[J]. Oncotarget, 2014, 7(39):64148-64167.
+
+Sardina D S , Alaimo S , Ferro A , et al. A novel computational method for inferring competing endogenous
+interactions[J]. Briefings in Bioinformatics, 2016:bbw084.
 }

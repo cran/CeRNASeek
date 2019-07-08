@@ -1,8 +1,12 @@
 import(igraph)
 importFrom("gtools","permutations","combinations")
-importFrom("stats", "cor", "cor.test", "pchisq", "phyper")
+importFrom("stats", "cor", "cor.test", "pchisq", "phyper","p.adjust")
 importFrom("igraph","graph.edgelist","layout_in_circle","V<-","E<-","layout.circle","layout_on_grid","layout_as_star","layout_","degree","betweenness","transitivity","evcent","closeness","E","V","plot.igraph")
 importFrom("grDevices", "dev.off", "pdf")
-importFrom("graphics", "plot")
+importFrom("graphics", "plot","legend", "par", "text")
 importFrom("utils", "combn")
+importFrom("survival","coxph","survfit","survdiff","Surv")
+importFrom("parallel","makeCluster","detectCores",
+"stopCluster","clusterApply")
 exportPattern("^[[:alpha:]]+")
+
