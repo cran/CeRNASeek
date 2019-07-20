@@ -1,7 +1,7 @@
 Package: CeRNASeek
 Type: Package
 Title: Identification and Analysis of ceRNA Regulation
-Version: 2.0
+Version: 2.1
 Date: 2019-07-08
 Author: Mengying Zhang,Yongsheng Li,Juan Xu*,Xia Li*
 Maintainer: Mengying Zhang <zhangmengying@hrbmu.edu.cn>
@@ -10,8 +10,10 @@ Description: Provides several functions to identify and analyse miRNA sponge, in
              of global ceRNA regulation prediction methods and four types of context-specific 
              prediction methods( Li Y et al.(2017) <doi:10.1093/bib/bbx137>), which are based 
              on miRNA-messenger RNA regulation alone, or by integrating heterogeneous data, 
-             respectively. In addition, this package provides several network analysis modules 
-             for viewing the constructed ceRNA-ceRNA network and analysis of the topological features.
+             respectively. In addition, For predictive ceRNA relationship pairs, this package 
+             provides several downstream analysis algorithms, including regulatory network 
+             analysis and functional annotation analysis, as well as survival prognosis analysis
+             based on expression of ceRNA ternary pair. 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -19,7 +21,7 @@ biocViews: competing endogenous RNA (ceRNA),
         GeneExpression,triplet,function,Software
 Depends: R (>= 3.1.0)
 Imports: gtools ,igraph,survival,parallel
-Packaged: 2019-07-08 08:25:36 UTC; dell
+Packaged: 2019-07-20 03:04:33 UTC; dell
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2019-07-08 09:00:03 UTC
+Date/Publication: 2019-07-20 06:20:02 UTC

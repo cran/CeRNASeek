@@ -1,5 +1,16 @@
 ceRNA.cernia <-
 function(miRtar,targetce=NULL, geneexp,miRexp, mres, numMIR = 3, cor_cutoff = 0, s_cutoff = 0.5) {
+# functions (parMM, graphWeights, recommendation, dtHybrid) of cernia method are from
+# the website: https://github.com/dsardina/cernia 
+#Copyright 2016 Rosalba Giugno Licensed under
+# the Apache License, Version 2.0 (the 'License'); you may not use this file except in
+# compliance with the License. You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software distributed under the
+# License is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions and
+# limitations under the License.
 
     dtHybrid <- function(miRtar) {
     mir <- unique(miRtar[, 1])
@@ -11,7 +22,7 @@ function(miRtar,targetce=NULL, geneexp,miRexp, mres, numMIR = 3, cor_cutoff = 0,
         A[which(tar %in% as.character(miRtar[i, 2])),
             which(mir %in% as.character(miRtar[i, 1]))] <- 1
     }
-    cl <- makeCluster(getOption("cl.cores", 2))
+    cl <- makeCluster(getOption("cl.cores", 2)) 
     #cl <- makeCluster(detectCores() - 2)
     M <- recommendation(A, cl = cl)
     W <- graphWeights(nrow(M), ncol(M), M, cl = cl)

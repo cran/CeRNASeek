@@ -1,25 +1,23 @@
-ceRNA.surv <-
+surv.plot <-
 function(ceRNA,exp.sur,train=NULL,test=NULL,index=1){
  if(is.null(train)&is.null(train)){
      wr<-as.data.frame(matrix(ncol=10,nrow=length(index)),stringsAsFactors=F)
-     colnames(wr)<-c("targetce","anotherce","coef_targetce","p_targetce","coef_anotherce","p_anotherce","N_low","N_high","HR","p")
-    for(i in index){
   #calculation and plot
     exp_sur<-matrix(nrow=dim(exp.sur)[1],ncol=2) 
-    exp_sur[,1]<-exp.sur[,ceRNA[i,1]]
-    exp_sur[,2]<-exp.sur[,ceRNA[i,2]]
-    colnames(exp_sur)<-ceRNA[i,1:2]
+    exp_sur[,1]<-exp.sur[,ceRNA[index,1]]
+    exp_sur[,2]<-exp.sur[,ceRNA[index,2]]
+    colnames(exp_sur)<-ceRNA[index,1:2]
     exp_sur<-t(exp_sur)
 	
-    q<-summary(coxph(Surv(OS,living)~exp.sur[,ceRNA[i,1]],exp.sur))
-    wr[i,1]=ceRNA[i,1]
-    wr[i,3]=q$coefficients[,1] 
-    wr[i,5]=q$coefficients[,5]
+    q<-summary(coxph(Surv(OS,living)~exp.sur[,ceRNA[index,1]],exp.sur))
+    wr[,1]=ceRNA[index,1]
+    wr[,3]=q$coefficients[,1] 
+    wr[,5]=q$coefficients[,5]
     w1<-q$coefficients[,2]	
-    q<-summary(coxph(Surv(OS,living)~exp.sur[,ceRNA[i,2]],exp.sur))
-    wr[i,2]=ceRNA[i,2]
-    wr[i,4]=q$coefficients[,1] 
-    wr[i,6]=q$coefficients[,5] 
+    q<-summary(coxph(Surv(OS,living)~exp.sur[,ceRNA[index,2]],exp.sur))
+    wr[,2]=ceRNA[index,2]
+    wr[,4]=q$coefficients[,1] 
+    wr[,6]=q$coefficients[,5] 
 	w2<-q$coefficients[,2]	
   
     
@@ -44,47 +42,49 @@ function(ceRNA,exp.sur,train=NULL,test=NULL,index=1){
     
     index1_sum<-sum(index1)
     index2_sum<-sum(index2)
-    wr[i,7]<-index1_sum
-    wr[i,8]<-index2_sum
+    wr[,7]<-index1_sum
+    wr[,8]<-index2_sum
     dif<-survdiff(Surv(exp_top[,3],exp_top[,2])~exp_top[,5],exp_top)
     p <- 1-pchisq(dif$chisq,length(dif$n) - 1)
 	HR <- (dif$obs[2]/dif$exp[2])/(dif$obs[1]/dif$exp[1])
-	wr[i,9]<-HR
-    wr[i,10]<-p
+	wr[,9]<-HR
+    wr[,10]<-p
 	surfit<-survfit(Surv(exp_top[,3],exp_top[,2])~exp_top[,5],exp_top)
-   }
-   return(wr)
+	title<-paste("exp:",paste(ceRNA[index,1:2],collapse = "-"))
+    plot(surfit,col=c('#5D83AA','#C4312F'),lwd=2,xlab="Survival time(days)",ylab="Survival probability",main=title)
+    p<-paste("p-value=",round(p,3))
+    text(max(exp_score[,3],na.rm = T)*0.5,0.9,p,pos=4)
+    legend("topright",c("LowRisk","HighRisk"),lty=1:1,col=c('#5D83AA','#C4312F'),bty = "n")
+    
    
  }else{
   #a dataframe named "wr" was constructed to contain result
   wr<-as.data.frame(matrix(ncol=14,nrow=length(index)),stringsAsFactors=F)
-  colnames(wr)<-c("targetce","anotherce","coef_targetce","p_targetce","coef_anotherce","p_anotherce","N_train_low","N_train_high","HR_train","p_train","N_test_low","N_test_high","HR_test","p_test")
-   for(i in index){
   #calculation and plot
     exp_train<-matrix(nrow=dim(train)[1],ncol=2) 
     train1<-as.vector(t(train))	
-    exp_train[,1]<-exp.sur[train1,ceRNA[i,1]]
-    exp_train[,2]<-exp.sur[train1,ceRNA[i,2]]
-    colnames(exp_train)<-ceRNA[i,1:2]
+    exp_train[,1]<-exp.sur[train1,ceRNA[index,1]]
+    exp_train[,2]<-exp.sur[train1,ceRNA[index,2]]
+    colnames(exp_train)<-ceRNA[index,1:2]
     rownames(exp_train)<-train1
     exp_train<-t(exp_train)
     exp_test<-matrix(nrow=dim(test)[1],ncol=2)
 	test1<-as.vector(t(test))
-    exp_test[,1]<-exp.sur[test1,ceRNA[i,1]]
-    exp_test[,2]<-exp.sur[test1,ceRNA[i,2]]
-    colnames(exp_test)<-ceRNA[i,1:2]
+    exp_test[,1]<-exp.sur[test1,ceRNA[index,1]]
+    exp_test[,2]<-exp.sur[test1,ceRNA[index,2]]
+    colnames(exp_test)<-ceRNA[index,1:2]
     rownames(exp_test)<-test1
     exp_test<-t(exp_test)
     #
-    q<-summary(coxph(Surv(OS,living)~exp.sur[train1,ceRNA[i,1]],exp.sur[train1,]))
-    wr[i,1]=ceRNA[i,1]
-    wr[i,3]=q$coefficients[,1] 
-    wr[i,5]=q$coefficients[,5]
+    q<-summary(coxph(Surv(OS,living)~exp.sur[train1,ceRNA[index,1]],exp.sur[train1,]))
+    wr[,1]=ceRNA[index,1]
+    wr[,3]=q$coefficients[,1] 
+    wr[,5]=q$coefficients[,5]
     w1<-q$coefficients[,2]	
-    q<-summary(coxph(Surv(OS,living)~exp.sur[train1,ceRNA[i,2]],exp.sur[train1,]))
-    wr[i,2]=ceRNA[i,2]
-    wr[i,4]=q$coefficients[,1] 
-    wr[i,6]=q$coefficients[,5] 
+    q<-summary(coxph(Surv(OS,living)~exp.sur[train1,ceRNA[index,2]],exp.sur[train1,]))
+    wr[,2]=ceRNA[index,2]
+    wr[,4]=q$coefficients[,1] 
+    wr[,6]=q$coefficients[,5] 
 	w2<-q$coefficients[,2]	
   
     
@@ -109,17 +109,17 @@ function(ceRNA,exp.sur,train=NULL,test=NULL,index=1){
     
     index1_sum<-sum(index1)
     index2_sum<-sum(index2)
-    wr[i,7]<-index1_sum
-    wr[i,8]<-index2_sum
+    wr[,7]<-index1_sum
+    wr[,8]<-index2_sum
    
      par(mfrow=c(length(index),2))
     dif<-survdiff(Surv(train_top[,3],train_top[,2])~train_top[,5],train_top)
     p <- 1-pchisq(dif$chisq,length(dif$n) - 1)
 	HR <- (dif$obs[2]/dif$exp[2])/(dif$obs[1]/dif$exp[1])
-	wr[i,9]<-HR
-    wr[i,10]<-p
+	wr[,9]<-HR
+    wr[,10]<-p
 	surfit<-survfit(Surv(train_top[,3],train_top[,2])~train_top[,5],train_top)
-	title<-paste("train:",paste(ceRNA[i,1:2],collapse = "-"))
+	title<-paste("train:",paste(ceRNA[index,1:2],collapse = "-"))
     plot(surfit,col=c('#5D83AA','#C4312F'),lwd=2,xlab="Survival time(days)",ylab="Survival probability",main=title)
     p<-paste("p-value=",round(p,3))
     text(max(train_score[,3],na.rm = T)*0.5,0.9,p,pos=4)
@@ -147,17 +147,19 @@ function(ceRNA,exp.sur,train=NULL,test=NULL,index=1){
     
     index1_sum<-sum(index1)
     index2_sum<-sum(index2)
-    wr[i,11]<-index1_sum
-    wr[i,12]<-index2_sum
+    wr[,11]<-index1_sum
+    wr[,12]<-index2_sum
     
     dif<-survdiff(Surv(test_top[,3],test_top[,2])~test_top[,5],test_top)
 	HR <- (dif$obs[2]/dif$exp[2])/(dif$obs[1]/dif$exp[1])
     p <- 1-pchisq(dif$chisq,length(dif$n) - 1)
-	wr[i,13]<-HR
-    wr[i,14]<-p
+	wr[,13]<-HR
+    wr[,14]<-p
     survfit<-survfit(Surv(test_top[,3],test_top[,2])~test_top[,5],test_top)
-    
-   }
-   return(wr)
+    title<-paste("test:",paste(ceRNA[index,1:2],collapse = "-"))
+    plot(surfit,col=c('#5D83AA','#C4312F'),lwd=2,xlab="Survival time(days)",ylab="Survival probability",main=title)
+    p<-paste("p-value=",round(p,3))
+    text(max(train_score[,3],na.rm = T)*0.5,0.9,p,pos=4)
+    legend("topright",c("LowRisk","HighRisk"),lty=1:1,col=c('#5D83AA','#C4312F'),bty = "n")  
   }
 }

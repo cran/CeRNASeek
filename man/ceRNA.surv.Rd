@@ -5,7 +5,7 @@
 survival analysis of ceRNA ternary relationship pairs
 }
 \description{
-It is used to predict the survival curve of ternary relationship pairs 
+It is used to predict the survival of ternary relationship pairs 
 and to support the survival prognosis of training sets and test sets.
 }
 \usage{
