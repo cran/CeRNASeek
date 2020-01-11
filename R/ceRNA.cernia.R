@@ -22,7 +22,7 @@ function(miRtar,targetce=NULL, geneexp,miRexp, mres, numMIR = 3, cor_cutoff = 0,
         A[which(tar %in% as.character(miRtar[i, 2])),
             which(mir %in% as.character(miRtar[i, 1]))] <- 1
     }
-    cl <- makeCluster(getOption("cl.cores", 2)) 
+    cl <- makeCluster(getOption("cl.cores", 2))
     #cl <- makeCluster(detectCores() - 2)
     M <- recommendation(A, cl = cl)
     W <- graphWeights(nrow(M), ncol(M), M, cl = cl)

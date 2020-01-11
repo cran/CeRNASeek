@@ -1,8 +1,8 @@
 Package: CeRNASeek
 Type: Package
 Title: Identification and Analysis of ceRNA Regulation
-Version: 2.1
-Date: 2019-07-08
+Version: 2.1.2
+Date: 2019-12-23
 Author: Mengying Zhang,Yongsheng Li,Juan Xu*,Xia Li*
 Maintainer: Mengying Zhang <zhangmengying@hrbmu.edu.cn>
 Description: Provides several functions to identify and analyse miRNA sponge, including
@@ -21,7 +21,7 @@ biocViews: competing endogenous RNA (ceRNA),
         GeneExpression,triplet,function,Software
 Depends: R (>= 3.1.0)
 Imports: gtools ,igraph,survival,parallel
-Packaged: 2019-07-20 03:04:33 UTC; dell
+Packaged: 2020-01-11 05:39:25 UTC; dell
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2019-07-20 06:20:02 UTC
+Date/Publication: 2020-01-11 06:30:02 UTC

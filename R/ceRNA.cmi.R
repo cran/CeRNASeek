@@ -2,6 +2,7 @@ ceRNA.cmi <-
 function(miRtar,targetce=NULL,geneexp,miRexp,numMIR=1,num_perm=100,cutoff=0.05){
          geneexp <- as.matrix(geneexp)
          miRexp <- as.matrix(miRexp)
+		     miRtar <- miRtar[intersect(which(miRtar[, 1] %in% rownames(miRexp)),which(miRtar[, 2] %in% rownames(geneexp))), ]
          miRtar_d<-split(miRtar[,1],miRtar[,2])
          miRs_name<-names(miRtar_d)
          mi_cond<-function(data){

@@ -1,5 +1,5 @@
 surv.plot <-
-function(ceRNA,exp.sur,train=NULL,test=NULL,index=1){
+function(ceRNA,exp.sur,train=NULL,test=NULL,index){
  if(is.null(train)&is.null(train)){
      wr<-as.data.frame(matrix(ncol=10,nrow=length(index)),stringsAsFactors=F)
   #calculation and plot
