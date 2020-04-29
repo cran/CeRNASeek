@@ -1,11 +1,11 @@
-bf1ca64ef516481907aeafaf77abdd74 *DESCRIPTION
+7d92f01a2e8649a01c4e75cc511a8179 *DESCRIPTION
 180b172a2b8d5598d3fc6a6f88664b0c *NAMESPACE
 446e565c0b857c21ae457fb2d85c39b0 *R/ceRNA.Net.R
 06741b5523f4f202017e348cf9e02d0f *R/ceRNA.app.R
 6ecce4d04c0a8c87c25da0ab7afd8a86 *R/ceRNA.basic.R
 aedaf75ca41696bc7240f356a5d2c0fa *R/ceRNA.cernia.R
 e37862359bf844619c3e0bdfd8f0f5c7 *R/ceRNA.cmi.R
-4e9cd6187e950269373b27a426521ecb *R/ceRNA.cor.R
+11b3235ecd00018e36bb135996dcfc33 *R/ceRNA.cor.R
 c231eda77948028fad7c7a3ccaa04cad *R/ceRNA.enrich.R
 fc951eb84b084db70191e6d2c348f46c *R/ceRNA.surv.R
 061a821a4f3f176c6f08d2e529d9a712 *R/surv.plot.R
@@ -16,7 +16,7 @@ fc951eb84b084db70191e6d2c348f46c *R/ceRNA.surv.R
 2bcd0e460e29feb5448de9c82daa3882 *man/ceRNA.basic.Rd
 a484d9981b717639d21b937f39c2f7a4 *man/ceRNA.cernia.Rd
 1e141af903f544f53f370db4a67ca47b *man/ceRNA.cmi.Rd
-668e7918a99010d4a754b1bf89835347 *man/ceRNA.cor.Rd
+627dcff22b0d23c8f930c33347b64aae *man/ceRNA.cor.Rd
 1b589bd2d420e799b7911f3a6a92bda6 *man/ceRNA.enrich.Rd
 146423bfa3dd13aa88e8bf58f5b7d192 *man/ceRNA.surv.Rd
 56a27f4ae55694bff1552478ec6fc995 *man/dataset.Rd

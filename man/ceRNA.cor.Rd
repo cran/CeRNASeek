@@ -55,6 +55,7 @@ A list of identified miRNA sponge interactions containing following components:
 \item \code{anotherce} names of modulators that another target(modulators) constitutes a ceRNA interaction relation.
 \item \code{miRNAs} names of miRNA shared by two targets.
 \item \code{miRNAs_num} number of miRNAs shared by two targets.
+\item \code{correlation} The correlation of the identified ceRNA interaction relation.
 \item \code{pvalue} The p value of the identified ceRNA interaction relation.
 }
 \item \code{miR_l} Number of miRNAs interacting with each target in the input file.

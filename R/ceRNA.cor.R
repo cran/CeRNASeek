@@ -90,16 +90,18 @@ s_real <- rbind(s_real,s_tmp)
 }
 sreal_mean <- mean(s_real)
 miRnum_background <- random_background[,which(colnames(random_background)==tmp_l)]
+cor_estimate<-cor.test(geneexp[x[1],],geneexp[x[2],])$estimate
 pvalue <- length(which(miRnum_background>=sreal_mean))/numrandom
 
-return(c(tmp_p,tmp_l,pvalue))
+return(c(tmp_p,tmp_l,cor_estimate,pvalue))
 }#for fun.partial
 fun.pearson<-function(x){
 tmp<-intersect(miRtar_d[[x[1]]],miRtar_d[[x[2]]])
 tmp_p<-paste(tmp,collapse=",")
 tmp_l<-length(tmp)
+cor_estimate<-cor.test(geneexp[x[1],],geneexp[x[2],])$estimate
 pvalue<-cor.test(geneexp[x[1],],geneexp[x[2],])$p.value
-return(c(tmp_p,tmp_l,pvalue))
+return(c(tmp_p,tmp_l,cor_estimate,pvalue))
 }#for fun.pearson
 if(is.null(targetce)){
 ceall <- ceRNA(miRtar=miRtar)$ceRNA
@@ -118,10 +120,10 @@ miRs<-t(apply(ceRNA_all,1,fun.pearson))
 miRs<-t(apply(ceRNA_all,1,fun.partial))
 }
 
-ceRNA<-data.frame(ceRNA_all,miRs[,1],as.numeric(miRs[,2]),as.numeric(miRs[,3]),stringsAsFactors=FALSE)
+ceRNA<-data.frame(ceRNA_all,miRs[,1],as.numeric(miRs[,2]),as.numeric(miRs[,3]),as.numeric(miRs[,4]),stringsAsFactors=FALSE)
 #ceRNA_1 <- as.matrix(do.call(rbind,lapply(lapply(seq_len(dim(ceRNA_O_1)[1]), function(i) ceRNA[intersect(which(ceRNA[,1]==ceRNA_O_1[i,1]),which(ceRNA[,2]==ceRNA_O_1[i,2])),]),data.frame)))
 rownames(ceRNA)<-NULL
-colnames(ceRNA)<-c("targetce","anotherce","miRNAs","miRNAs_num","pvalue")
+colnames(ceRNA)<-c("targetce","anotherce","miRNAs","miRNAs_num","correlation","pvalue")
 }else{ 
 
 ce_target <- ceRNA(miRtar=miRtar,targetce=targetce)$ceRNA
@@ -142,10 +144,10 @@ miRs<-t(apply(cetarget,1,fun.pearson))
 miRs<-t(apply(cetarget,1,fun.partial))
 }
 
-ceRNA<-data.frame(cetarget,miRs[,1],as.numeric(miRs[,2]),as.numeric(miRs[,3]),stringsAsFactors=FALSE)
+ceRNA<-data.frame(cetarget,miRs[,1],as.numeric(miRs[,2]),as.numeric(miRs[,3]),as.numeric(miRs[,4]),stringsAsFactors=FALSE)
 #ceRNA_1 <- as.matrix(do.call(rbind,lapply(lapply(seq_len(dim(ceRNA_O_1)[1]), function(i) ceRNA[intersect(which(ceRNA[,1]==ceRNA_O_1[i,1]),which(ceRNA[,2]==ceRNA_O_1[i,2])),]),data.frame)))
 rownames(ceRNA)<-NULL
-colnames(ceRNA)<-c("targetce","anotherce","miRNAs","miRNAs_num","pvalue")
+colnames(ceRNA)<-c("targetce","anotherce","miRNAs","miRNAs_num","correlation","pvalue")
 }#for else
 
 result<-list(ceRNA=ceRNA,miR_l=miR_l)
